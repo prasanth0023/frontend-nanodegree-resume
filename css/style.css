@@ -1,3 +1,11 @@
+menu {
+    color: red
+}
+
+navigation {
+    background-color: #333 /* darkgrey */
+}
+
 body,
 div,
 ul,
@@ -138,7 +146,6 @@ a {
 }
 
 .flex-box {
-    display: -webkit-flex;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -185,13 +192,13 @@ span {
 @media only screen and (max-width: 1024px) {
     #lets-connect {
         margin-top: 5%;
-    };
+    }
 }
 
 @media only screen and (max-width:900px) {
     .biopic {
         width: 175px;
-    };
+    }
 }
 
 @media only screen and (max-width: 750px) {
@@ -205,7 +212,7 @@ span {
 
     .welcome-message {
         display: none;
-    };
+    }
 }
 
 #map {
@@ -224,7 +231,15 @@ span {
     #skills-h3,
   .biopic {
         display: block;
-    };
+    }
+}
+
+menu {
+    color: red;
+}
+
+navigation {
+    background-color: #333 /* darkgrey */;
 }
 
 menu {
