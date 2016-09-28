@@ -6,15 +6,15 @@ var bio = {
         "email": "prasanthpayne@gmail.com",
         "github": "prasanth0023",
         "twitter": "@prasanth",
-        "location": "neyveli",
+        "location": "neyveli"
     },
     "welcomeMessage": "Hello World",
     "skills": ["awesomeness", "delivering things", "cryogenic sleep", "saving the universe"],
-    "bioPic": "images/me.jpg"
+    "biopic": "images/me.jpg"
 };
 bio.display = function() {
 
-    var formattedBiopic = HTMLbioPic.replace("%data%", bio.bioPic);
+    var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
     $("#header").append(formattedBiopic);
 
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -56,7 +56,7 @@ var work = {
     }]
 };
 
-function displayWork() {
+work.display = function() {
 
 
     for (var i = 0; i < work.jobs.length; i++) {
@@ -65,6 +65,7 @@ function displayWork() {
         var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
         var formattedEmployerTitle = formattedEmployer + formattedTitle;
         $(".work-entry:last").append(formattedEmployerTitle);
+        $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[i].location));
 
 
         var formattedDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
@@ -73,8 +74,8 @@ function displayWork() {
         var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
         $(".work-entry:last").append(formattedDescription);
     }
-}
-displayWork();
+};
+work.display();
 
 var education = {
     "schools": [{
@@ -82,14 +83,14 @@ var education = {
         "location": "chennai",
         "degree": "masters",
         "majors": ["CSS"],
-        "dates": 2013,
+        "dates": "2013",
         "url": "http://example.com"
     }, {
         "name": "RM college",
         "location": "banglore",
         "degree": "mtech",
         "majors": ["sass"],
-        "dates": 2014,
+        "dates": "2014",
         "url": "http://xample.com"
     }],
 
@@ -97,7 +98,7 @@ var education = {
     "onlineCourses": [{
         "title": "JavaScript syntax",
         "school": "udacity",
-        "dates": 2015,
+        "dates": "2015",
         "url": "http://www.udacity.com"
     }]
 };
@@ -112,6 +113,7 @@ education.display = function() {
         $(".education-entry:last").append(formattedLocation);
         $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[i].dates));
         $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[i].majors));
+        $(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.schools[i].url));
     }
     $("#education").append(HTMLonlineClasses);
     for (var k = 0; k < education.onlineCourses.length; k++) {
@@ -125,7 +127,7 @@ education.display = function() {
     }
 
 };
-education.display();
+
 
 
 var projects = {
@@ -166,8 +168,8 @@ projects.display();
 
 
 $(document).click(function(loc) {
-    var x = loc.pageX;
     var y = loc.pageY;
+    var x = loc.pageX;
     logClicks(x, y);
 });
 
@@ -183,7 +185,7 @@ $("#main").append(internationalizeButton);
 $("#mapDiv").append(googleMap);
 // This is just a sample script. Paste your real code (javascript or HTML) here.
 
-if ('this_is' == /an_example/) {
+if ("this_is" == /an_example/) {
     of_beautifier();
 } else {
     var a = b ? (c % d) : e[f];
