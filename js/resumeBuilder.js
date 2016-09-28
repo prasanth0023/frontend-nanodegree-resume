@@ -1,7 +1,7 @@
 
 var bio={
-  "name":"prasanth",
-  "role":"web Developer",
+  "name":"Prasanth",
+  "role":"Web Developer",
   "contacts":{
     "mobile":"8012847092",
     "email":"prasanthpayne@gmail.com",
@@ -9,17 +9,19 @@ var bio={
     "twitter":"@prasanth",
     "location":"neyveli",
   },
-  "welcomeMessage":"hello world",
+  "welcomeMessage":"Hello World",
   "skills":["awesomeness","delivering things","cryogenic sleep","saving the universe"],
-  "bioPic":"images/fry.jpg"
-}
+  "bioPic":"images/me.jpg"
+};
 bio.display=function(){
-var formattedBiopic = HTMLbioPic.replace("%data%","images/me.jpg");
+
+var formattedBiopic = HTMLbioPic.replace("%data%",bio.bioPic);
 $("#header").append(formattedBiopic);
-var formattedBio = HTMLheaderName.replace("%data%","Prasanth");
-$("#header").append(formattedBio);
-var formattedRole = HTMLheaderRole.replace("%data%","Web Developer");
-$("#header").append(formattedRole);
+
+var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+$("#header").prepend(formattedRole);
+var formattedBio = HTMLheaderName.replace("%data%",bio.name);
+$("#header").prepend(formattedBio);
 if(bio.skills.length > 0) {
   $("#header").append(HTMLskillsStart);
   var formattedSKill = HTMLskills.replace("%data%",bio.skills[0]);
@@ -31,13 +33,18 @@ $("#skills").append(formattedSKill);
 var formattedSKill = HTMLskills.replace("%data%",bio.skills[3]);
 $("#skills").append(formattedSKill);
 }
-$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-}
+$("#topContacts ,#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#topContacts,#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+$("#topContacts,#footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+$("#topContacts,#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+$("#topContacts,#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+var formattedwelcomeMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+$("#header").append(formattedwelcomeMessage);
+
+};
 bio.display();
+
+
 var work={
   "jobs":[
     {
@@ -56,35 +63,50 @@ var work={
 
 }
 ]
+};
+
+function displayWork() {
+
+
+for (var i =0;i < work.jobs.length;i++) {
+  $("#workExperience").append(HTMLworkStart);
+   var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[i].employer);
+   var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[i].title);
+   var formattedEmployerTitle = formattedEmployer + formattedTitle;
+   $(".work-entry:last").append(formattedEmployerTitle);
+
+
+var formattedDates = HTMLworkDates.replace("%data%",work.jobs[i].dates);
+$(".work-entry:last").append(formattedDates);
+
+var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[i].description);
+$(".work-entry:last").append(formattedDescription);
 }
-
-
-
-
-
+};
+displayWork();
 
 var education ={
   "schools":[
     {
-      "name":"rmd college",
+      "name":"RMD college",
      "location":"chennai",
      "degree":"masters",
-     "majors":["cs"],
+     "majors":["CSS"],
      "dates":2013,
      "url":"http://example.com"
     },
     {
-      "name":"rm college",
-     "location":"hennai",
-     "degree":"msters",
-     "majors":["cas"],
+      "name":"RM college",
+     "location":"banglore",
+     "degree":"mtech",
+     "majors":["sass"],
      "dates":2014,
      "url":"http://xample.com"
     }
   ],
 
 
-"onlineCourse":[
+"onlineCourses":[
   {
     "title":"JavaScript syntax",
     "school":"udacity",
@@ -92,7 +114,33 @@ var education ={
     "url":"http://www.udacity.com"
   }
 ]
-}
+};
+
+education.display=function(){
+  for(var i=0;i < education.schools.length;i++){
+    $("#education").append(HTMLschoolStart);
+    var formattedName = HTMLschoolName.replace("%data%",education.schools[i].name);
+    var formattedDegree = HTMLschoolDegree.replace("%data%",education.schools[i].degree);
+     var formattedNameDegree= formattedName + formattedDegree;
+     $(".education-entry:last").append(formattedNameDegree);
+    var formattedLocation = HTMLschoolLocation.replace("%data%",education.schools[i].location);
+    $(".education-entry:last").append(formattedLocation);
+    $(".education-entry:last").append(HTMLschoolDates.replace("%data%",education.schools[i].dates));
+    $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",education.schools[i].majors));
+       }$("#education").append(HTMLonlineClasses);
+       for(k=0;k< education.onlineCourses.length;k++){
+         $("#education").append(HTMLschoolStart);
+         var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[k].title);
+         var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[k].school);
+         var formatttedTitleSchool = formattedTitle + formattedSchool;
+         $(".education-entry:last").append(formatttedTitleSchool);
+       $(".education-entry:last").append(HTMLonlineDates.replace("%data%",education.onlineCourses[k].dates));
+       $(".education-entry:last").append(HTMLonlineURL.replace("%data%",education.onlineCourses[k].url));
+     }
+
+};
+education.display();
+
 
 var projects ={
          "projects":[
@@ -100,35 +148,39 @@ var projects ={
              "title":"birds",
             "dates":"september",
            "description":" Here is a Hobby Circuit for electronics hobbyists that can switch on & off a light, Fan, Radio etc., by the sound of clap. The sound of clap is received by a small microphone that is shown biased by resistor R1 in the circuit. The microphone changes sound wave in to electrical wave, which is further amplified by Q1. Transistor Q1 is used as common emitter circuit to amplify weak signals received by the microphone. Amplified output from the collector of transistor Q1 is  feed to the Bistable Multivibrator circuit also known as flip-flop circuit.",
-           "images": ["images/Clap-Switch-2.png"]
+           "images": ["images/Clap_Switch.gif"]
 
 
          }
 
          ]
-       }
+       };
+       projects.display = function()
+        {
+          for(var i=0;i< projects.projects.length;i++){
+            $("#projects").append(HTMLprojectStart);
+
+            var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[i].title);
+            $(".project-entry:last").append(formattedTitle);
+            var formattedDates =HTMLprojectDates.replace("%data%",projects.projects[i].dates);
+            $(".project-entry:last").append(formattedDates);
+
+            var formattedDescription =HTMLprojectDescription.replace("%data%",projects.projects[i].description);
+            $(".project-entry:last").append(formattedDescription);
+            if(projects.projects[i].images.length > 0){
+              for(image in projects.projects[i].images){
+                var formattedImage =HTMLprojectImage.replace("%data%",projects.projects[i].images[image]);
+                $(".project-entry:last").append(formattedImage);
+
+              }
+            }
+
+          }
+        };
+        projects.display();
 
 
 
-function displayWork() {
-
-
-for (job in work.jobs) {
-  $("#workExperience").append(HTMLworkStart);
-   var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
-   var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
-   var formattedEmployerTitle = formattedEmployer + formattedTitle;
-   $(".work-entry:last").append(formattedEmployerTitle);
-
-
-var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
-$(".work-entry:last").append(formattedDates);
-
-var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description);
-$(".work-entry:last").append(formattedDescription);
-}
-}
-displayWork();
 $(document).click(function(loc) {
   var x = loc.pageX;
   var y = loc.pageY;
@@ -143,27 +195,4 @@ function inName(name){
   return name[0] +" "+name[1];
 }
 $("#main").append(internationalizeButton);
-projects.display = function()
- {
-   for(project in projects.projects){
-     $("#projects").append(HTMLprojectStart);
-
-     var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
-     $(".project-entry:last").append(formattedTitle);
-     var formattedDates =HTMLprojectDates.replace("%data%",projects.projects[project].dates);
-     $(".project-entry:last").append(formattedDates);
-
-     var formattedDescription =HTMLprojectDescription.replace("%data%",projects.projects[project].description);
-     $(".project-entry:last").append(formattedDescription);
-     if(projects.projects[project].images.length > 0){
-       for(image in projects.projects[project].images){
-         var formattedImage =HTMLprojectImage.replace("%data%",projects.projects[project].images[image]);
-         $(".project-entry:last").append(formattedImage);
-
-       }
-     }
-
-   }
- }
- projects.display();
- $("#mapDiv").append(googleMap);
+$("#mapDiv").append(googleMap);
