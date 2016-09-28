@@ -22,7 +22,7 @@ bio.display = function() {
     var formattedBio = HTMLheaderName.replace("%data%", bio.name);
     $("#header").prepend(formattedBio);
     $("#header").append(HTMLskillsStart);
-    for(var i=0;i < bio.skills.length > 0;i++) {
+    for (var i = 0; i < bio.skills.length > 0; i++) {
 
         $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
 
@@ -100,8 +100,7 @@ var education = {
         "dates": 2015,
         "url": "http://www.udacity.com"
     }]
-}
-;
+};
 education.display = function() {
     for (var i = 0; i < education.schools.length; i++) {
         $("#education").append(HTMLschoolStart);
@@ -153,11 +152,11 @@ projects.display = function() {
         var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
         $(".project-entry:last").append(formattedDescription);
 
-            for (var j=0 ;j<  projects.projects[i].images.length;j++) {
-                $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[i].images[j]));
+        for (var j = 0; j < projects.projects[i].images.length; j++) {
+            $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[i].images[j]));
 
 
-            }
+        }
 
 
     }
